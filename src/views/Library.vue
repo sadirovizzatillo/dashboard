@@ -3,5 +3,5 @@
 
 
 <template>
-    <h1>Settings details</h1>
+    <h1>Library details</h1>
 </template>

@@ -3,5 +3,5 @@
 
 
 <template>
-    <h1>Settings details</h1>
+    <h1>Transactions details</h1>
 </template>
