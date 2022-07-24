@@ -9,11 +9,11 @@ import DashboardIcon from "../icons/dashboard.svg";
 
 const menu = [
   { name: "Dashboard", icon: HomeIcon, path: "/"},
-  { name: "Transactions", icon: BillIcon, path: "/transactions" },
-  { name: "Contacts", icon: InvoiceIcon, path: "/contacts" },
-  { name: "Features", icon: BuildingIcon, path: "/features" },
-  { name: "Library", icon: CardIcon, path: "/library" },
-  { name: "Settings", icon: SettingsIcon, path: "/settings" },
+  { name: "Transactions", icon: BillIcon, path: "/" },
+  { name: "Contacts", icon: InvoiceIcon, path: "/" },
+  { name: "Features", icon: BuildingIcon, path: "/" },
+  { name: "Library", icon: CardIcon, path: "/" },
+  { name: "Settings", icon: SettingsIcon, path: "/" },
 ];
 </script>
 <template>
@@ -31,7 +31,7 @@ const menu = [
         <li v-for="item in menu" :key="item">
           <router-link
             :to="item.path"
-            class="flex items-center gap-x-4 text-gray-400 hover:font-medium hover:text-white focus:font-medium focus:text-white focus:outline-none"
+            class="flex items-center gap-x-4 text-gray-400"
           >
             <Component :is="item.icon" class="h-6 w-6 stroke-current" />
             <span>{{ item.name }}</span>
