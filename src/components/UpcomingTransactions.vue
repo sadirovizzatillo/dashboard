@@ -1,73 +1,41 @@
 <script setup>
-</script>
+    import { defineProps, computed } from "vue";
 
-<template>
-    <div class="">
-        <header class="flex items-center">
-            <h1 class="text-xl font-bold">Upcoming Transactions</h1>
-            <p class="text-md text-gray-600">View All</p>
-        </header>
-        <main>
-            <div>
-                <p>Today</p>
-                <div class="flex justify-between">
-                    <div class="flex">
-                        <img src="" alt="" width="40" height="40">
-                        <div class="flex flex-col">
-                            <h4 class="text-md">Water Bill</h4>
-                            <p class="text-sm">Unseccessfully</p>
-                        </div>
-                    </div>
-                    <span class="text-amber-800">-$280</span>
-                </div>
-            </div>
+    const props = defineProps({
+      data: {
+        type: Object,
+        required: true,
+      },
+    });
+    console.log(props.data)
+    const setBackground = computed(() => {
+        if(props.data.color == "pink") {
+            return 'bg-pink-600'
+        } else if(props.data.color == "blue") {
+            return 'bg-blue-500'
+        } else if(props.data.color == "warning") {
+            return 'bg-yellow-400'
+        } else { return 'bg-current' }
+    })
 
-            <div>
-                <p>Tomorrow</p>
-                <div class="flex justify-between">
-                    <div class="flex">
-                        <img src="" alt="" width="40" height="40">
-                        <div class="flex flex-col">
-                            <h4 class="text-md">Income: Salary Oct Bill</h4>
-                            <p class="text-sm">Unseccessfully</p>
-                        </div>
-                    </div>
-                    <span class="text-amber-800">-$280</span>
-                </div>
-            </div>
-
-            <div class="flex justify-between mb-3">
-                <div class="flex">
-                    <img src="" alt="" width="40" height="40">
-                    <div class="flex flex-col">
-                        <h4 class="text-md">Electric Bill</h4>
-                        <p class="text-sm">Unseccessfully</p>
-                    </div>
-                </div>
-                <span class="text-amber-800">-$480</span>
-            </div>
-
-            <div class="flex justify-between mb-2">
-                <div class="flex">
-                    <img src="" alt="" width="40" height="40">
-                    <div class="flex flex-col">
-                        <h4 class="text-md">Income: Jone Transfer</h4>
-                        <p class="text-sm">Unseccessfully</p>
-                    </div>
-                </div>
-                <span class="text-amber-800">+$500</span>
-            </div>
-
-            <div class="flex justify-between">
-                <div class="flex">
-                    <img src="" alt="" width="40" height="40">
-                    <div class="flex flex-col">
-                        <h4 class="text-md">Income: Jone Transfer</h4>
-                        <p class="text-sm">Unseccessfully</p>
-                    </div>
-                </div>
-                <span class="text-amber-800">+$500</span>
-            </div>
-        </main>
-    </div>
-</template>
+    </script>
+    <template>
+      <li class="mb-4 flex items-center">
+        <Component  :is="props.data.icon" :class="setBackground" class="mr-4 h-[40px] w-[40px] rounded-10 stroke-white p-2" />
+        <div class="flex w-full items-center justify-between">
+          <div>
+            <p class="text-sm font-medium">
+              {{ props.data.title }}
+            </p>
+            <span class="text-[11px] font-medium text-gray-500">{{
+              props.data.status
+            }}</span>
+          </div>
+          <span
+            class="block font-medium"
+            :class="props.data.isIncome ? 'text-current' : 'text-red-700'"
+            >${{ props.data.transferAmount }}</span
+          >
+        </div>
+      </li>
+    </template>

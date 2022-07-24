@@ -4,8 +4,8 @@ import QuestionMarkIcon from "../icons/question-mark.svg";
 import MasterCardIcon from "../icons/master-card.svg";
 import CubeIcon from "../icons/cube.svg";
 import TransactionsVue from "../components/Transactions.vue";
-import UpcomingTransactions from "../components/UpcomingTransactions.vue";
 import StatisticsList from "../components/StatisticsList.vue";
+import Transaction from "../components/Transaction.vue";
 </script>
 
 <template>
@@ -47,7 +47,7 @@ import StatisticsList from "../components/StatisticsList.vue";
         </div>
       </li>
 
-      <li class="rounded-[16px] !bg-red-400 px-5 pt-2 pb-6">
+      <li class="rounded-[16px] bg-sky-400 px-5 pt-2 pb-6">
         <div class="flex flex-col">
           <MasterCardIcon class="h-12 w-12" />
           <span class="text-[10px] mb-2 uppercase">Card number</span>
@@ -68,7 +68,7 @@ import StatisticsList from "../components/StatisticsList.vue";
     <StatisticsList />
     <div class="flex">
       <TransactionsVue/>
-      <UpcomingTransactions/>
+      <Transaction/>
     </div>
   </div>
 </template>
